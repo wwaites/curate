@@ -1,0 +1,5 @@
+argparse
+ckanclient
+pyparsing
+svn+http://python-dlp.googlecode.com/svn/trunk/layercake-python#egg=rdflib
+hg+https://fuxi.googlecode.com/hg/#egg=fuxi
