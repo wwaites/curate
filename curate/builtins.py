@@ -2,12 +2,12 @@ import urllib2
 from logging import getLogger
 
 def httpGET(pats, pato):
-    log = getLogger("httpGET(%s)" % pats.n3())
+    log = getLogger("httpGET(%s, %s)" % (pats.n3(), pato.n3()))
     log.debug("init")
-    def f(s,_o):
+    def f(_unused, resource):
         try:
-            log.debug(s)
-            fp = urllib2.urlopen(s)
+            log.debug(resource)
+            fp = urllib2.urlopen(resource)
             fp.read()
             fp.close()
             return True
