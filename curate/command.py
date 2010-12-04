@@ -19,7 +19,7 @@ def curate():
 
     logging.basicConfig(
         level=logging.DEBUG if args.debug else logging.INFO,
-        format="%(asctime)s - %(name)s[%(levelname)s]: %(message)s"
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
     )
 
     ruleStore, ruleGraph, network = makeRuleStore(args.rules)
