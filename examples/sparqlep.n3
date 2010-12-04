@@ -1,0 +1,10 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix void: <http://rdfs.org/ns/void#>.
+@prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
+
+{ ?dataset void:sparqlEndpoint ?endpoint .
+  ?dataset curate:sparqlCheck ?endpoint } =>
+{ ?dataset sparqlCheckResult [
+      	   resource ?endpoint;
+	   rdf:value success ]
+}.
