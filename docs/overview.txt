@@ -1,0 +1,67 @@
+Purpose and Overview
+====================
+
+`CKAN`_ is a metadata registry for datasets. These datasets can be
+organised into groups for curation purposes. Often these goups have
+criteria that must be met in order for datasets to be included. This
+tool is intended to help automate checking the metadata to see if a
+particular dataset should be included.
+
+The design of this tool is to take a set of rules, expressed in 
+`Notation 3`_ and to compare the dataset description against these
+rules. The output is an `RDF`_ graph containing statements generated
+by the rules. Inclusion in a group depends on contents of this graph. 
+
+An example may make this clearer. Suppose we consider the `LOD
+Cloud`_. Inclusion in the cloud means inclusion in the `lodcloud
+group`_ on CKAN. Amongst the criteria for inclusion are that a dataset
+must contain dereferenceable resources. So we make a simple ruleset::
+
+    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+    @prefix void: <http://rdfs.org/ns/void#>.
+    @prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
+
+    { ?dataset void:exampleResource ?example .
+      ?dataset curate:httpGET ?example } =>
+    { ?dataset httpGETResult [ 
+           resource ?example;
+           rdf:value success ]
+    }.
+
+This says that if something, the ``?dataset`` has an example resource,
+``?example`` and we evaluate the special predicate ``curate:httpGET``
+(of which more later) then we can say that the result of the ``GET``
+operation was a success. This and other simple rulesets can be found
+in the `examples`_ directory in the source distribution.
+
+Indeed the result of using the tool to evaluate the `record for
+DBpedia`_ produces a graph that looks like this::
+
+    @prefix ns1: <http://ckan.net/package/>.
+    @prefix ns2: <https://github.com/wwaites/curate/raw/master/examples/dereference.n3#>
+    @prefix ns4: <http://dbpedia.org/page/>.
+    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+
+    ns1:dbpedia ns2:httpGETResult
+        [ ns2:resource <http://dbpedia.org/data/DBpedia.rdf>;
+          rdf:value ns2:success],
+        [ ns2:resource ns4:DBpedia;
+          rdf:value ns2:success],
+        [ ns2:resource <http://dbpedia.org/data/DBpedia.n3>;
+          rdf:value ns2:success].
+
+The command line used to do this was:
+
+.. code-block:: sh
+
+    curate -v \
+        -r https://github.com/wwaites/curate/raw/master/examples/dereference.n3 \
+        dbpedia
+
+.. _ckan: http://ckan.oet/
+.. _Notation 3: http://www.w3.org/DesignIssues/Notation3
+.. _RDF: http://en.wikipedia.org/wiki/Resource_Description_Framework
+.. _LOD Cloud: http://richard.cyganiak.de/2007/10/lod/
+.. _lodcloud group: http://ckan.net/group/lodcloud
+.. _examples: https://github.com/wwaites/curate/tree/master/examples/
+.. _record for DBpedia: http://ckan.net/package/dbpedia

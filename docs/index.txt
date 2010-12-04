@@ -1,0 +1,28 @@
+CKAN Curation Tool
+==================
+
+This package contains :program:`curate` a tool for checking `CKAN`_
+packages to see if they meet certain criteria, for example for
+inclusion in certain groups.
+
+Relevant places to go for information are:
+
+  * Documentation (this page): http://packages.python.org/curate
+  * Source Code: http://github.com/wwaites/curate
+  * Wiki Page: http://ckan.org/wiki/curate
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   overview
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+.. _CKAN: http://ckan.net/
