@@ -6,6 +6,9 @@ glue between the inference rules and the operational python code that
 does the actual checking. The current list of builtins together with
 their documentations is reproduced below.
 
+For the general idea of how to use builtins see the purpose and
+overview section which has some examples. 
+
 If you are a programmer wishing to implement a new builtin, see the 
 `implementing`_ section below
 
