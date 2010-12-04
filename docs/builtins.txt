@@ -1,0 +1,67 @@
+Builtins
+========
+
+Built-in predicates are the what makes this tool work. They are the
+glue between the inference rules and the operational python code that
+does the actual checking. The current list of builtins together with
+their documentations is reproduced below.
+
+If you are a programmer wishing to implement a new builtin, see the 
+`implementing`_ section below
+
+.. autofunction:: curate.builtins.httpGET
+.. autofunction:: curate.builtins.sparqlCheck
+
+.. _implementing:
+
+Implementing New Builtins
+-------------------------
+
+Suppose we wanted to implement a new builtin that would pass or fail
+half the time. Let's call it ``coinToss``.
+
+.. code-block:: python
+
+    from random import choice
+
+    def coinToss(pats, pato):
+        """
+	The built in function gets called when it occurs in the
+	left hand side of a rule, the pattern to match. it is a
+	predicate, and it gets passed the values of subject and
+	object. It must return a function that will be called for
+	bound variables whenever the pattern matches.
+	"""
+        def f(subject, object):
+	    """
+	    This function gets called on bound variables and does
+	    the actual work. It must return either True or False.
+	    In this case we do not actually care about the subject
+	    or object that have been passed in but a real builtin
+	    would.
+	    """
+	    return choice([True, False])
+	return f
+
+The :program:`curate` tool will look in the list of package
+entrypoints for ones in a section called ``curate.builtins``. So to
+make this built-in predicate useable we have to put something like
+this the part of our call to :func:`setup` in our ``setup.py`` 
+that deals with entrypoints.
+
+.. code-block:: python
+
+    setup(...
+        entry_points="""
+            [curate.builtins]
+            coinToss=example.package:coinToss
+        """
+    )
+
+Once the package is installed this builtin will be useable in N3
+rules as in, for example::
+
+    @prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
+
+    { ?foo curate:coinToss ?bar } => { ?foo flipped true }
+

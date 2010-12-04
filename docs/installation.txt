@@ -1,0 +1,36 @@
+Installation
+============
+
+Because this tool uses the `FuXi`_ inference engine, it requires a
+certain branch of `RDFLib`, namelay the `layercake
+branch`_. Installing is nonetheless easy enough. It is recommended to
+make use of `virtualenv`_ to create a python environment for this tool.
+
+So a typical installation recipe might be to do:
+
+.. code-block:: sh
+
+    ## set up the environment
+    pip install virtualenv
+    virtualenv --no-site-packages --distribute curation
+    . ./curation/bin/activate
+
+    cd curation
+
+    ## install the layercake branch of RDFLib and other prerequisites
+    wget --no-check-certificate \
+        http://github.com/wwaites/curate/raw/master/pip-requirements.txt
+    pip install pyparsing
+    pip install -r pip-requirements.txt
+
+    ## this is needed for talking to SPARQL endpoints and cannot
+    ## be installed with pip
+    easy_install 4Suite-XML
+
+    ## install the curate tool
+    pip install curate
+    
+.. _FuXi: http://code.google.com/p/fuxi
+.. _RDFLib: http://www.rdflib.net/
+.. _layercake branch: http://code.google.com/p/python-dlp/wiki/LayerCakePythonDivergence
+.. _virtualenv: http://pypi.python.org/pypi/virtualenv
