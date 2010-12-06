@@ -52,6 +52,11 @@ DBpedia`_ produces a graph that looks like this::
         [ ns2:resource <http://dbpedia.org/data/DBpedia.n3>;
           rdf:value ns2:success].
 
+The ``curate:httpGET`` special predicate results in a call to the
+built-in function :func:`curate.builtins.httpGET` which does what its
+name suggests and returns a value of ``True`` if successful (allowing
+the entailment to obtain) and ``False`` otherwise.
+
 The command line used to do this was:
 
 .. code-block:: sh
@@ -60,6 +65,62 @@ The command line used to do this was:
         -r https://github.com/wwaites/curate/raw/master/examples/dereference.n3 \
         dbpedia
 
+A more advanced example can do things other than simply infer
+triples. We can actually have consequent actions using the
+builtins. One thing that is important to remember is that we cannot
+use builtins in the head (consequent) rules and the head must have 
+at least one inferred triple at the present time (until FuXi impements
+something corresponding to `RIF Actions`_ other than simply the moral
+equivalent of *Assert fact* which is what it does now). 
+
+Continuing with an example, suppose the criteria for membership in a
+group, such as the `curation testing group` is simply to have a
+dereferenceable example resource. So we may make a ruleset that looks
+like this::
+
+    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix void: <http://rdfs.org/ns/void#>.
+    @prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
+
+    { ?dataset void:exampleResource ?example .
+      ?dataset curate:httpGET ?example } =>
+    { ?dataset httpGETResult [ 
+           resource ?example;
+           group <http://ckan.net/group/curation_testing>
+      ]
+    } .
+
+    { ?dataset httpGETResult [ group ?group ] .
+      ?dataset curate:addGroup ?group } => 
+    { ?dataset dcterms:isPartOf ?group } .
+
+This example contains two rules that will chain together. The first
+rule is almost identical to the previous exampe except instead of
+entailing a result with ``rdf:value succes`` it entails on with a
+group. The second rule looks for such entailments and calls the
+:func:`curate.builtins.addGroup` builtin on them. This builtin will
+queue a call to the `CKAN API`_ that adds the given dataset to the
+group in question.
+
+The second rule will also entail a ``dcterms:isPartOf`` relationship
+which seems fitting.
+
+The command line for executing this one, because it does an
+authenticated write operation on the `CKAN`_ catalogue, needs an
+extra parameter to specify the API key to use, and needs to be told
+explicitly to save the metadata back via the API.
+
+.. code-block:: sh
+
+    curate -v -s \
+        -k API_KEY \
+        -r https://github.com/wwaites/curate/raw/master/examples/groups.n3 \
+        dbpedia
+
+For more complete documentation on the options and behaviours, see the
+documentation for the command line tool in this manual.
+
 .. _ckan: http://ckan.oet/
 .. _Notation 3: http://www.w3.org/DesignIssues/Notation3
 .. _RDF: http://en.wikipedia.org/wiki/Resource_Description_Framework
@@ -67,3 +128,6 @@ The command line used to do this was:
 .. _lodcloud group: http://ckan.net/group/lodcloud
 .. _examples: https://github.com/wwaites/curate/tree/master/examples/
 .. _record for DBpedia: http://ckan.net/package/dbpedia
+.. _RIF Actions: http://www.w3.org/TR/rif-prd/#Actions
+.. _curation testing group: http://ckan.net/group/curation_testing
+.. _CKAN API: http://packages.python.org/ckan/api.html

@@ -1,12 +1,12 @@
-Builtins
-========
+Built-in Predicates
+===================
 
 Built-in predicates are the what makes this tool work. They are the
 glue between the inference rules and the operational python code that
-does the actual checking. The current list of builtins together with
+does the actual checking. The current list of built-ins together with
 their documentations is reproduced below.
 
-For the general idea of how to use builtins see the purpose and
+For the general idea of how to use built-ins see the purpose and
 overview section which has some examples. 
 
 If you are a programmer wishing to implement a new builtin, see the 
@@ -14,10 +14,12 @@ If you are a programmer wishing to implement a new builtin, see the
 
 .. autofunction:: curate.builtins.httpGET
 .. autofunction:: curate.builtins.sparqlCheck
+.. autofunction:: curate.builtins.addTag
+.. autofunction:: curate.builtins.addGroup
 
 .. _implementing:
 
-Implementing New Builtins
+Implementing New Built-ins
 -------------------------
 
 Suppose we wanted to implement a new builtin that would pass or fail

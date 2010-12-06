@@ -7,8 +7,8 @@
   ?dataset curate:httpGET ?example } =>
 { ?dataset httpGETResult [ 
       	   resource ?example;
-           tag "resource-deref";
-	   rdf:value success ]
+           tag "resource-deref"
+  ]
 } .
 
 { ?dataset httpGETResult [ tag ?tag ] .

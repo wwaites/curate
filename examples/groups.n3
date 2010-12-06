@@ -7,8 +7,8 @@
   ?dataset curate:httpGET ?example } =>
 { ?dataset httpGETResult [ 
       	   resource ?example;
-           group <http://ckan.net/group/curation_testing>;
-	   rdf:value success ]
+           group <http://ckan.net/group/curation_testing>
+  ]
 } .
 
 { ?dataset httpGETResult [ group ?group ] .

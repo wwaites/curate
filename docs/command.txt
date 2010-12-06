@@ -1,0 +1,4 @@
+Command Line Tool
+=================
+
+.. automodule:: curate.command
