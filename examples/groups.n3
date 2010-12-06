@@ -1,0 +1,16 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix void: <http://rdfs.org/ns/void#>.
+@prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
+
+{ ?dataset void:exampleResource ?example .
+  ?dataset curate:httpGET ?example } =>
+{ ?dataset httpGETResult [ 
+      	   resource ?example;
+           group <http://ckan.net/group/curation_testing>;
+	   rdf:value success ]
+} .
+
+{ ?dataset httpGETResult [ group ?group ] .
+  ?dataset curate:addGroup ?group } => 
+{ ?dataset dcterms:isPartOf ?group } .

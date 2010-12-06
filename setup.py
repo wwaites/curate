@@ -46,5 +46,7 @@ Curation Utilities for CKAN""",
         [curate.builtins]
         httpGET=curate.builtins:httpGET
         sparqlCheck=curate.builtins:sparqlCheck
+        addTag=curate.builtins:addTag
+        addGroup=curate.builtins:addGroup
     """,
 )

@@ -1,7 +1,9 @@
 import urllib2
 from logging import getLogger
 from rdflib.Graph import ConjunctiveGraph
+from rdflib import URIRef, Literal
 from rdflib.store.SPARQL import SPARQLStore
+from curate.work import queue
 
 def httpGET(_unusedp, resourcep):
     """
@@ -49,4 +51,22 @@ def sparqlCheck(_unusedp, endpointp):
         except Exception, e:
             log.warn("%s", e)
         return False
+    return f
+
+def addTag(datasetp, tagp):
+    def f(dataset, tag):
+        queue.add(dataset, "tags", [unicode(tag)])
+        return True
+    return f
+
+def addGroup(datasetp, groupp):
+    def f(dataset, group):
+        if isinstance(group, URIRef):
+            _, group = group.rsplit("/", 1)
+        elif isinstance(group, Literal):
+            _, group = unicode(group)
+        else:
+            return False
+        queue.add(dataset, "groups", [unicode(group)])
+        return True
     return f

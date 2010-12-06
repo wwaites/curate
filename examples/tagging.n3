@@ -1,0 +1,16 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix void: <http://rdfs.org/ns/void#>.
+@prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
+
+{ ?dataset void:exampleResource ?example .
+  ?dataset curate:httpGET ?example } =>
+{ ?dataset httpGETResult [ 
+      	   resource ?example;
+           tag "resource-deref";
+	   rdf:value success ]
+} .
+
+{ ?dataset httpGETResult [ tag ?tag ] .
+  ?dataset curate:addTag ?tag } => 
+{ ?dataset dcat:keyword ?tag } .
