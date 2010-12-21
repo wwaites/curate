@@ -10,6 +10,7 @@ from FuXi.Rete.Util import generateTokenSet
 from curate.work import queue
 
 RDF = Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+RDFS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 DCT = Namespace("http://purl.org/dc/terms/")
 HTTP = Namespace("http://www.w3.org/2006/http#")
 METH = Namespace("http://www.w3.org/2008/http-methods#")
@@ -77,12 +78,16 @@ class httpReq(Action):
             content = response.read(4096)
             response.close()
         except urllib2.HTTPError, response:
-            g.add((resp, HTTP["statusCodeNumber"], Literal("-1")))
-            self.log.error("%s %s" % (uri, response))
+            g.add((resp, HTTP["statusCodeNumber"], Literal("%s" % response.getcode())))
+            if response.headers:
+                self.record_headers(g, resp, response.headers)
+            content = response.read(4096)
+            response.close()
+            self.log.error("%s %s" % (resource, response))
         except urllib2.URLError, e:
             g.add((resp, HTTP["statusCodeNumber"], Literal("-1")))
             g.add((conn, RDFS["comment"], Literal(e.reason)))
-            self.log.error("%s %s" % (uri, e))
+            self.log.error("%s %s" % (resource, e))
 
         tNode.network.feedFactsToAdd(generateTokenSet(g))
         tNode.network.inferredFacts += g

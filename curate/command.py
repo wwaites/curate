@@ -55,6 +55,7 @@ import logging
 from curate.rules import makeRuleStore
 from rdflib.Graph import Graph
 from FuXi.Rete.Util import generateTokenSet
+from ckanclient import CkanClient
 from curate.work import queue
 
 def curate():
@@ -71,6 +72,8 @@ or perform certain actions.
                         help="N3 rules (can specify more than once)",)
     parser.add_argument("-k", dest="api_key", help="CKAN API Key")
     parser.add_argument("-a", dest="api_base", help="CKAN API base")
+    parser.add_argument("-d", dest="delta", action="store_true", 
+                        help="Accumulate closure delta")
     parser.add_argument("-v", dest="debug", action="store_true",
                         help="Verbose output")
     parser.add_argument("-s", dest="save", action="store_true",
@@ -86,15 +89,23 @@ or perform certain actions.
 
     ruleStore, ruleGraph, network = makeRuleStore(args.rules)
 
+    datasets = args.datasets
+    if not datasets:
+        datasets = CkanClient(base_location=args.api_base, api_key=args.api_key
+                              ).package_register_get()
+
     closureDelta = Graph()
-    for dataset in args.datasets:
+    for dataset in datasets:
         network.reset(closureDelta)
         g = Graph()
         g.parse(args.base + dataset)
         network.feedFactsToAdd(generateTokenSet(g))
+        if not args.delta:
+            closureDelta = Graph()
 
     if args.save:
         queue.process(base_location=args.api_base, api_key=args.api_key)
 
-    print closureDelta.serialize(format="n3")
+    if args.delta:
+        print closureDelta.serialize(format="n3")
 
