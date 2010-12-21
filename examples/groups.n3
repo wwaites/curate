@@ -1,16 +1,15 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix void: <http://rdfs.org/ns/void#>.
+@prefix http: <http://www.w3.org/2006/http#>.
 @prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
 
-{ ?dataset void:exampleResource ?example .
-  ?dataset curate:httpGET ?example } =>
-{ ?dataset httpGETResult [ 
-      	   resource ?example;
-           group <http://ckan.net/group/curation_testing>
-  ]
-} .
+{ ?dataset void:exampleResource ?example } =>
+{ ?example curate:httpReq "HEAD" }.
 
-{ ?dataset httpGETResult [ group ?group ] .
-  ?dataset curate:addGroup ?group } => 
-{ ?dataset dcterms:isPartOf ?group } .
+{ ?dataset void:exampleResource ?example .
+  ?req a http:Request . 
+  ?req http:requestURI ?uri .
+  ?req http:resp ?resp .
+  ?resp http:statusCodeNumber "200" } =>
+{ ?dataset curate:addGroup <http://ckan.net/group/curation_testing> }.

@@ -12,11 +12,6 @@ overview section which has some examples.
 If you are a programmer wishing to implement a new builtin, see the 
 `implementing`_ section below
 
-.. autofunction:: curate.builtins.httpGET
-.. autofunction:: curate.builtins.sparqlCheck
-.. autofunction:: curate.builtins.addTag
-.. autofunction:: curate.builtins.addGroup
-
 .. _implementing:
 
 Implementing New Built-ins

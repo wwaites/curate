@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.4'
+version = '0.5'
 
 setup(
     name='curate',
@@ -36,7 +36,7 @@ Curation Utilities for CKAN""",
         "argparse",
         "ckanclient",
         "rdflib",
-        "FuXi",
+        "FuXi>=1.2",
     ],
     entry_points="""
         # -*- Entry points: -*-
@@ -44,9 +44,12 @@ Curation Utilities for CKAN""",
         curate=curate.command:curate
 
         [curate.builtins]
-        httpGET=curate.builtins:httpGET
-        sparqlCheck=curate.builtins:sparqlCheck
-        addTag=curate.builtins:addTag
-        addGroup=curate.builtins:addGroup
+
+        [curate.actions]
+        httpReq=curate.actions:httpReq
+#        sparqlCheck=curate.builtins:sparqlCheck
+        addTag=curate.actions:addTag
+        delTag=curate.actions:delTag
+        addGroup=curate.actions:addGroup
     """,
 )

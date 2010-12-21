@@ -23,39 +23,17 @@ must contain dereferenceable resources. So we make a simple ruleset::
     @prefix void: <http://rdfs.org/ns/void#>.
     @prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
 
-    { ?dataset void:exampleResource ?example .
-      ?dataset curate:httpGET ?example } =>
-    { ?dataset httpGETResult [ 
-           resource ?example;
-           rdf:value success ]
-    }.
+    { ?dataset void:exampleResource ?example } =>
+    { ?example curate:httpReq "HEAD" }.
 
 This says that if something, the ``?dataset`` has an example resource,
-``?example`` and we evaluate the special predicate ``curate:httpGET``
-(of which more later) then we can say that the result of the ``GET``
-operation was a success. This and other simple rulesets can be found
+``?example`` then we evaluate the special predicate ``curate:httpReq``
+(of which more later). This and other simple rulesets can be found
 in the `examples`_ directory in the source distribution.
 
-Indeed the result of using the tool to evaluate the `record for
-DBpedia`_ produces a graph that looks like this::
-
-    @prefix ns1: <http://ckan.net/package/>.
-    @prefix ns2: <https://github.com/wwaites/curate/raw/master/examples/dereference.n3#>
-    @prefix ns4: <http://dbpedia.org/page/>.
-    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-
-    ns1:dbpedia ns2:httpGETResult
-        [ ns2:resource <http://dbpedia.org/data/DBpedia.rdf>;
-          rdf:value ns2:success],
-        [ ns2:resource ns4:DBpedia;
-          rdf:value ns2:success],
-        [ ns2:resource <http://dbpedia.org/data/DBpedia.n3>;
-          rdf:value ns2:success].
-
-The ``curate:httpGET`` special predicate results in a call to the
-built-in function :func:`curate.builtins.httpGET` which does what its
-name suggests and returns a value of ``True`` if successful (allowing
-the entailment to obtain) and ``False`` otherwise.
+The result of using the tool to evaluate the `record for
+DBpedia`_ produces a graph that contains a transcript of the HTTP
+session, including headers and status codes and suchlike.
 
 The command line used to do this was:
 
@@ -69,9 +47,7 @@ A more advanced example can do things other than simply infer
 triples. We can actually have consequent actions using the
 builtins. One thing that is important to remember is that we cannot
 use builtins in the head (consequent) rules and the head must have 
-at least one inferred triple at the present time (until FuXi impements
-something corresponding to `RIF Actions`_ other than simply the moral
-equivalent of *Assert fact* which is what it does now). 
+at least one inferred triple or action.
 
 Continuing with an example, suppose the criteria for membership in a
 group, such as the `curation testing group` is simply to have a
@@ -79,32 +55,27 @@ dereferenceable example resource. So we may make a ruleset that looks
 like this::
 
     @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-    @prefix dcterms: <http://purl.org/dc/terms/> .
     @prefix void: <http://rdfs.org/ns/void#>.
+    @prefix http: <http://www.w3.org/2006/http#>.
     @prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
 
-    { ?dataset void:exampleResource ?example .
-      ?dataset curate:httpGET ?example } =>
-    { ?dataset httpGETResult [ 
-           resource ?example;
-           group <http://ckan.net/group/curation_testing>
-      ]
-    } .
+    { ?dataset void:exampleResource ?example } =>
+    { ?example curate:httpReq "HEAD" }.
 
-    { ?dataset httpGETResult [ group ?group ] .
-      ?dataset curate:addGroup ?group } => 
-    { ?dataset dcterms:isPartOf ?group } .
+    { ?dataset void:exampleResource ?example .
+      ?req a http:Request . 
+      ?req http:requestURI ?uri .
+      ?req http:resp ?resp .
+      ?resp http:statusCodeNumber "200" } =>
+    { ?dataset curate:addGroup <http://ckan.net/group/curation_testing> }.
 
 This example contains two rules that will chain together. The first
-rule is almost identical to the previous exampe except instead of
-entailing a result with ``rdf:value succes`` it entails on with a
-group. The second rule looks for such entailments and calls the
-:func:`curate.builtins.addGroup` builtin on them. This builtin will
-queue a call to the `CKAN API`_ that adds the given dataset to the
-group in question.
-
-The second rule will also entail a ``dcterms:isPartOf`` relationship
-which seems fitting.
+rule is identical to the previous example. The second rule looks at
+the result of the request and checks that the status code was "200".
+In this case it calls the ``curate:addGroup`` action to add the
+dataset to the specified group.  This action calls
+:class:`curate.actions.addGroup` which will queue a call to the `CKAN
+API`_ that adds the given dataset to the group in question.
 
 The command line for executing this one, because it does an
 authenticated write operation on the `CKAN`_ catalogue, needs an

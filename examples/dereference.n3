@@ -2,9 +2,5 @@
 @prefix void: <http://rdfs.org/ns/void#>.
 @prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
 
-{ ?dataset void:exampleResource ?example .
-  ?dataset curate:httpGET ?example } =>
-{ ?dataset httpGETResult [ 
-      	   resource ?example;
-	   rdf:value success ]
-}.
+{ ?dataset void:exampleResource ?example } =>
+{ ?example curate:httpReq "HEAD" }.
