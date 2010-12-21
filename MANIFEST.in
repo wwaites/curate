@@ -1,0 +1,10 @@
+include COPYRIGHT
+include MANIFEST.in
+include pip-requirements.txt
+include setup.py
+include setup.cfg
+include docs/conf.py
+include docs/_static/.keep
+recursive-include docs *.txt
+recursive-include examples *.n3
+recursive-include curate *.py
