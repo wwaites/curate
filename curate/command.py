@@ -86,6 +86,7 @@ or perform certain actions.
         level=logging.DEBUG if args.debug else logging.INFO,
         format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
     )
+    log = logging.getLogger(__name__)
 
     ruleStore, ruleGraph, network = makeRuleStore(args.rules)
 
@@ -96,15 +97,22 @@ or perform certain actions.
 
     closureDelta = Graph()
     for dataset in datasets:
+        log.info("processing %s" % dataset)
         network.reset(closureDelta)
-        g = Graph()
-        g.parse(args.base + dataset)
+        try:
+            g = Graph()
+            g.parse(args.base + dataset)
+        except Exception, e:
+            log.error("exception loading graph at %s" % (args.base+dataset,))
+            continue
         network.feedFactsToAdd(generateTokenSet(g))
+
+        if args.save:
+            queue.process(base_location=args.api_base, api_key=args.api_key)
+
         if not args.delta:
             closureDelta = Graph()
 
-    if args.save:
-        queue.process(base_location=args.api_base, api_key=args.api_key)
 
     if args.delta:
         print closureDelta.serialize(format="n3")
