@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.6'
+version = '0.7'
 
 setup(
     name='curate',
@@ -47,6 +47,7 @@ Curation Utilities for CKAN""",
 
         [curate.actions]
         httpReq=curate.actions:httpReq
+        curlReq=curate.actions:curlReq
 #        sparqlCheck=curate.builtins:sparqlCheck
         addTag=curate.actions:addTag
         delTag=curate.actions:delTag

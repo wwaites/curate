@@ -1,0 +1,6 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
+
+{ ?dataset dcat:distribution ?dist .
+  ?dist dcat:accessURL ?download } =>
+{ ?download curate:curlReq "GET" }.

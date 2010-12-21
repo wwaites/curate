@@ -1,9 +1,9 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix void: <http://rdfs.org/ns/void#>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
 @prefix http: <http://www.w3.org/2006/http#>.
+@prefix curl: <http://eris.okfn.org/ww/2010/12/curl#>.
 @prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
 
 ##
@@ -18,7 +18,7 @@
 ##
 { ?dataset dcat:distribution ?dist .
   ?dist dcat:accessURL ?download } =>
-{ ?download curate:httpReq "GET" }.
+{ ?download curate:curlReq "GET" }.
 
 { ?dataset dcat:distribution ?dist .
   ?dist dcat:accessURL ?download .
@@ -29,7 +29,7 @@
 ## For voidD datasets we also check their example resources
 ##
 { ?dataset void:exampleResource ?example } =>
-{ ?example curate:httpReq "GET" }.
+{ ?example curate:curlReq "GET" }.
 
 { ?dataset void:exampleResource ?example . 
   ?example broken ?code } =>
@@ -46,3 +46,7 @@
   ?code log:notEqualTo "200" } =>
 { ?uri broken ?code }.
 
+{ ?curl a curl:Curl .
+  ?curl curl:uri ?uri .
+  ?curl curl:status curl:Failure } =>
+{ ?uri broken curl:Failure }.

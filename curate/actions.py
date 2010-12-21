@@ -14,6 +14,7 @@ RDFS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 DCT = Namespace("http://purl.org/dc/terms/")
 HTTP = Namespace("http://www.w3.org/2006/http#")
 METH = Namespace("http://www.w3.org/2008/http-methods#")
+CURL = Namespace("http://eris.okfn.org/ww/2010/12/curl#")
 
 class Action(object):
     def __init__(self, sbind, obind):
@@ -99,6 +100,123 @@ class httpReq(Action):
             g.add((head, RDF["type"], HTTP["MessageHeader"]))
             g.add((head, HTTP["fieldName"], Literal(h)))
             g.add((head, HTTP["fieldValue"], Literal(hdict[h])))
+
+class curlReq(Action):
+    def http_conn(self, g, resource, method):
+        conn = BNode()
+        g.add((conn, RDF["type"], HTTP["Connection"]))
+        g.add((conn, DCT["date"], Literal(datetime.utcnow())))
+        parsed = urlparse(resource)
+        host, port = parsed.hostname, parsed.port
+        if port is None:
+            if parsed.scheme == "https:":
+                port = 443
+            else:
+                port = 80
+        g.add((conn, HTTP["connectionAuthority"], Literal("%s:%s" % (host, port))))
+
+        req = BNode()
+        g.add((conn, HTTP["requests"], req))
+        g.add((req, RDF["type"], HTTP["Request"]))
+        g.add((req, HTTP["methodName"], Literal(method)))
+        g.add((req, HTTP["mthd"], METH[method]))
+        g.add((req, HTTP["requestURI"], resource))
+        resp = BNode()
+        g.add((req, HTTP["resp"], resp))
+        g.add((resp, RDF["type"], HTTP["Response"]))
+        return resp
+
+    def generic_conn(self, g, resource, method):
+        conn = BNode()
+        g.add((conn, RDF["type"], CURL["Curl"]))
+        g.add((conn, DCT["date"], Literal(datetime.utcnow())))
+        g.add((conn, CURL["uri"], resource))
+        return conn
+
+    def recode(self, s):
+        try: return s.decode("utf-8")
+        except: pass
+        try: return s.decode("latin1")
+        except: pass
+        try: return s.decode("koi8-r")
+        except: pass
+        raise UnicodeError(s)
+
+    def __call__(self, tNode, inferredTriple, token, _binding, debug = False):
+        import pycurl
+        resource = self.get(self.sbind, token)
+        method = self.get(self.obind, token)
+
+        self.log.info("Fetching %s" % resource)
+        parsed_resource = urlparse(resource)
+
+        g = Graph()
+
+
+        c = pycurl.Curl()
+        c.setopt(c.URL, str(resource))
+        c.setopt(c.FAILONERROR, 0)
+        c.setopt(c.FOLLOWLOCATION, 1)
+        c.setopt(c.MAXREDIRS, 5)
+
+        if parsed_resource.scheme in ("http", "https"):
+            resp = self.http_conn(g, resource, method)
+            def handle_header(h):
+                h = h.strip()
+                if ":" in h:
+                    k, v = [x.strip() for x in h.split(":", 1)]
+                    head = BNode()
+                    g.add((resp, HTTP["headers"], head))
+                    g.add((head, RDF["type"], HTTP["MessageHeader"]))
+                    g.add((head, HTTP["fieldName"], Literal(k)))
+                    g.add((head, HTTP["fieldValue"], Literal(v)))
+            def handle_data(s):
+                s = self.recode(s)
+                g.add((resp, HTTP["body"], Literal(s)))
+                return 0
+            c.setopt(c.HEADERFUNCTION, handle_header)
+            c.setopt(c.WRITEFUNCTION, handle_data)
+            if method == u"HEAD":
+                c.setopt(c.NOBODY, 1)
+        else:
+            resp = self.generic_conn(g, resource, method)
+            def handle_data(s):
+                s = self.recode(s)
+                g.add((resp, CURL["data"], Literal(s)))
+                return 0
+            c.setopt(c.WRITEFUNCTION, handle_data)
+
+        if parsed_resource.scheme in ("https"):
+            c.setopt(c.SSL_VERIFYPEER, 0)
+
+        success = False
+
+        try:
+            c.perform()
+            success = True
+        except Exception, e:
+            if e.args[0] == pycurl.E_WRITE_ERROR:
+                ## we purposely fail the write in order not to
+                ## download the whole thing
+                success = True
+#            elif e.args[0] in (pycurl.E_REMOTE_FILE_NOT_FOUND, 
+#                               pycurl.E_COULDNT_RESOLVE_HOST,
+#                               pycurl.E_COULDNT_CONNECT):
+#                g.add((resp, RDFS["comment"], Literal(e.args[1])))
+            else:
+                g.add((resp, RDFS["comment"], Literal(e.args[1])))
+        
+        if parsed_resource.scheme in ("http", "https"):
+            g.add((resp, HTTP["statusCodeNumber"], Literal("%s" % c.getinfo(c.HTTP_CODE))))
+        elif success:
+            g.add((resp, CURL["status"], CURL["Success"]))
+        else:
+            g.add((resp, CURL["status"], CURL["Failure"]))            
+
+        c.close()
+
+        tNode.network.feedFactsToAdd(generateTokenSet(g))
+        tNode.network.inferredFacts += g
 
 class addTag(Action):
     def __call__(self, tNode, inferredTriple, token, _binding, debug = False):
