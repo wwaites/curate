@@ -1,3 +1,4 @@
+import sys
 import urllib2
 from urlparse import urlparse
 from datetime import datetime
@@ -194,18 +195,16 @@ class curlReq(Action):
         try:
             c.perform()
             success = True
-        except Exception, e:
+        except pycurl.error, e:
+            ## why do we have to do this manually here?
+            sys.exc_clear()
             if e.args[0] == pycurl.E_WRITE_ERROR:
                 ## we purposely fail the write in order not to
                 ## download the whole thing
                 success = True
-#            elif e.args[0] in (pycurl.E_REMOTE_FILE_NOT_FOUND, 
-#                               pycurl.E_COULDNT_RESOLVE_HOST,
-#                               pycurl.E_COULDNT_CONNECT):
-#                g.add((resp, RDFS["comment"], Literal(e.args[1])))
             else:
                 g.add((resp, RDFS["comment"], Literal(e.args[1])))
-        
+
         if parsed_resource.scheme in ("http", "https"):
             g.add((resp, HTTP["statusCodeNumber"], Literal("%s" % c.getinfo(c.HTTP_CODE))))
         elif success:
