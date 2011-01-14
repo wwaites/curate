@@ -108,7 +108,11 @@ class curlReq(Action):
         g.add((conn, RDF["type"], HTTP["Connection"]))
         g.add((conn, DCT["date"], Literal(datetime.utcnow())))
         parsed = urlparse(resource)
-        host, port = parsed.hostname, parsed.port
+        host = parsed.hostname
+        try:
+            port = parsed.port
+        except:
+            port = None
         if port is None:
             if parsed.scheme == "https:":
                 port = 443
