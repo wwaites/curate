@@ -206,8 +206,10 @@ class curlReq(Action):
                 g.add((resp, RDFS["comment"], Literal(e.args[1])))
 
         if parsed_resource.scheme in ("http", "https"):
-            g.add((resp, HTTP["statusCodeNumber"], Literal("%s" % c.getinfo(c.HTTP_CODE))))
-        elif success:
+            code = c.getinfo(c.HTTP_CODE)
+            g.add((resp, HTTP["statusCodeNumber"], Literal("%s" % code)))
+
+        if success:
             g.add((resp, CURL["status"], CURL["Success"]))
         else:
             g.add((resp, CURL["status"], CURL["Failure"]))            
@@ -241,3 +243,4 @@ class addGroup(Action):
         else:
             return
         queue.add(dataset, "groups", [unicode(group)])
+

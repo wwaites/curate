@@ -20,7 +20,6 @@ So a typical installation recipe might be to do:
     ## install the layercake branch of RDFLib and other prerequisites
     wget --no-check-certificate \
         http://github.com/wwaites/curate/raw/master/pip-requirements.txt
-    pip install pyparsing
     pip install -r pip-requirements.txt
 
     ## this is needed for talking to SPARQL endpoints and cannot
