@@ -40,7 +40,7 @@ The command line used to do this was:
 .. code-block:: sh
 
     curate -v \
-        -r https://github.com/wwaites/curate/raw/master/examples/dereference.n3 \
+        -r https://bitbucket.org/okfn/curate/raw/tip/examples/dereference.n3 \
         dbpedia
 
 A more advanced example can do things other than simply infer
@@ -86,7 +86,7 @@ explicitly to save the metadata back via the API.
 
     curate -v -s \
         -k API_KEY \
-        -r https://github.com/wwaites/curate/raw/master/examples/groups.n3 \
+        -r https://bitbucket.org/okfn/curate/raw/tip/examples/groups.n3 \
         dbpedia
 
 For more complete documentation on the options and behaviours, see the
@@ -97,7 +97,7 @@ documentation for the command line tool in this manual.
 .. _RDF: http://en.wikipedia.org/wiki/Resource_Description_Framework
 .. _LOD Cloud: http://richard.cyganiak.de/2007/10/lod/
 .. _lodcloud group: http://ckan.net/group/lodcloud
-.. _examples: https://github.com/wwaites/curate/tree/master/examples/
+.. _examples: https://bitbucket.org/okfn/curate/src/tip/examples/
 .. _record for DBpedia: http://ckan.net/package/dbpedia
 .. _RIF Actions: http://www.w3.org/TR/rif-prd/#Actions
 .. _curation testing group: http://ckan.net/group/curation_testing

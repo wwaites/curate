@@ -8,7 +8,7 @@ inclusion in certain groups.
 Relevant places to go for information are:
 
   * Documentation (this page): http://packages.python.org/curate
-  * Source Code: http://github.com/wwaites/curate
+  * Source Code: http://bitbucket.org/okfn/curate
   * Wiki Page: http://ckan.org/wiki/curate
 
 Contents:
