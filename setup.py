@@ -2,6 +2,14 @@ from setuptools import setup, find_packages
 import sys, os
 
 version = '0.8'
+requirements=[
+    "ckanclient",
+    "rdflib",
+    "FuXi>=1.2",
+    ]
+
+if sys.version_info.major == 2 and sys.version_info.minor < 7:
+    requirements.append("argparse")
 
 setup(
     name='curate',
@@ -32,12 +40,7 @@ Curation Utilities for CKAN""",
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     include_package_data=True,
     zip_safe=False,
-    install_requires=[
-        "argparse",
-        "ckanclient",
-        "rdflib",
-        "FuXi>=1.2",
-    ],
+    install_requires=requirements,
     entry_points="""
         # -*- Entry points: -*-
         [console_scripts]
