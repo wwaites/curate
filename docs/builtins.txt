@@ -15,7 +15,7 @@ If you are a programmer wishing to implement a new builtin, see the
 .. _implementing:
 
 Implementing New Built-ins
--------------------------
+--------------------------
 
 Suppose we wanted to implement a new builtin that would pass or fail
 half the time. Let's call it ``coinToss``.
