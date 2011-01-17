@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:dc="http://purl.org/dc/terms/"
+   xmlns:dcat="http://www.w3.org/ns/dcat#"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/"
+   xmlns:opmv="http://purl.org/net/opmv/ns#"
+   xmlns:ordf="http://purl.org/NET/ordf/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:rev="http://purl.org/stuff/rev#"
+   xmlns:time="http://www.w3.org/2006/time#"
+   xmlns:void="http://rdfs.org/ns/void#"
+>
+  <rdf:Description rdf:nodeID="WsMI0gQr">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/geonames-semantic-web"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">86547</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://semantic.ckan.net/package/dbpedia.nt">
+    <opmv:wasGeneratedBy rdf:resource="http://semantic.ckan.net/package/dbpedia#uN0M5iw4"/>
+    <foaf:topic rdf:resource="http://ckan.net/package/dbpedia"/>
+    <rdf:type rdf:resource="http://purl.org/net/opmv/ns#Artifact"/>
+    <foaf:primaryTopic rdf:resource="http://semantic.ckan.net/package/dbpedia"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Iakt25ds">
+    <rdf:value>application/rdf+xml</rdf:value>
+    <rdfs:label>RDF/XML</rdfs:label>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/IMT"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="f18YCXDZ">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <foaf:nick>ww</foaf:nick>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="dVTmDLBb">
+    <foaf:mbox rdf:resource="mailto:dbpedia-discussion@lists.sourceforge.net"/>
+    <foaf:name>DBpedia Team - http://wiki.dbpedia.org/Imprint</foaf:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ckan.net/package/dbpedia">
+    <owl:sameAs rdf:resource="urn:uuid:dcc6715c-bf94-4a89-bbf3-35933da795a5"/>
+    <dcat:distribution rdf:nodeID="Xowjgfmp"/>
+    <dcat:distribution rdf:nodeID="KqSmWVoZ"/>
+    <foaf:page rdf:resource="http://semantic.ckan.net/package/dbpedia.n3"/>
+    <foaf:page rdf:resource="http://semantic.ckan.net/package/dbpedia.nt"/>
+    <foaf:page rdf:resource="http://semantic.ckan.net/package/dbpedia.rdf"/>
+    <dc:rights rdf:resource="http://purl.org/okfn/licenses/cc-by-sa"/>
+    <void:subset rdf:nodeID="WsMI0gQr"/>
+    <void:subset rdf:nodeID="eWiCtGnh"/>
+    <void:subset rdf:nodeID="cNsNNnPC"/>
+    <void:subset rdf:nodeID="iy81122c"/>
+    <void:subset rdf:nodeID="zR7egJ2E"/>
+    <void:subset rdf:nodeID="z2jdoYH2"/>
+    <void:subset rdf:nodeID="Sm5sJqMa"/>
+    <void:subset rdf:nodeID="E3cAxbSD"/>
+    <void:subset rdf:nodeID="uI5fOS2d"/>
+    <void:subset rdf:nodeID="YLMcoghe"/>
+    <void:subset rdf:nodeID="O01oMULy"/>
+    <void:subset rdf:nodeID="FkncLYqL"/>
+    <void:subset rdf:nodeID="ACEVHpX1"/>
+    <void:subset rdf:nodeID="notd87eY"/>
+    <void:subset rdf:nodeID="MV3CfRur"/>
+    <void:subset rdf:nodeID="Me0jMfHG"/>
+    <void:subset rdf:nodeID="otwWzqwj"/>
+    <void:subset rdf:nodeID="a4ieRb1V"/>
+    <void:subset rdf:nodeID="uogw9Py2"/>
+    <void:subset rdf:nodeID="GnZ7EWvu"/>
+    <void:subset rdf:nodeID="QQqANshe"/>
+    <void:subset rdf:nodeID="A5CQAcEk"/>
+    <void:subset rdf:nodeID="inorJMtP"/>
+    <void:subset rdf:nodeID="UDdKUd9d"/>
+    <void:subset rdf:nodeID="nb8mOA9x"/>
+    <void:subset rdf:nodeID="x4mbXgO3"/>
+    <void:dataDump rdf:resource="http://downloads.dbpedia.org/3.5.1/all_languages.tar"/>
+    <dc:description>### Description
+
+From the front page:
+
+&gt; DBpedia.org is a community effort to extract structured information from Wikipedia and to make this information available on the Web. DBpedia allows you to ask sophisticated queries against Wikipedia and to link other datasets on the Web to Wikipedia data.
+&gt; 
+&gt; The DBpedia knowledge base currently describes more than 3.4 million things, out of which 1.5 million are classified in a consistent Ontology, including 312,000 persons, 413,000 places, 94,000 music albums, 49,000 films, 15,000 video games, 140,000 organizations, 146,000 species and 4,600 diseases. The DBpedia data set features labels and abstracts for these 3.2 million things in up to 92 different languages; 841,000 links to images and 5,081,000 links to external web pages; 9,393,000 external links into other RDF datasets, 565,000 Wikipedia categories, and 75,000 YAGO categories. The DBpedia knowledge base altogether consists of over 1 billion pieces of information (RDF triples) out of which 257 million were extracted from the English edition of Wikipedia and 766 million were extracted from other language editions.</dc:description>
+    <rev:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.5</rev:rating>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000000000</void:triples>
+    <void:sparqlEndpoint rdf:resource="http://dbpedia.org/sparql"/>
+    <dc:contributor rdf:nodeID="dVTmDLBb"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>
+    <dc:identifier>dbpedia</dc:identifier>
+    <void:exampleResource rdf:resource="http://dbpedia.org/page/DBpedia"/>
+    <void:exampleResource rdf:resource="http://dbpedia.org/data/DBpedia.rdf"/>
+    <void:exampleResource rdf:resource="http://dbpedia.org/data/DBpedia.n3"/>
+    <dc:title>DBpedia</dc:title>
+    <foaf:homepage rdf:resource="http://dbpedia.org/"/>
+    <rdfs:label>DBpedia</rdfs:label>
+    <void:vocabulary rdf:resource="http://rdfs.org/ns/void#"/>
+    <void:vocabulary rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <dc:creator rdf:nodeID="XBwtxGi9"/>
+    <dcat:keyword>no-license-metadata</dcat:keyword>
+    <dcat:keyword>crossdomain</dcat:keyword>
+    <dcat:keyword>rdf</dcat:keyword>
+    <dcat:keyword>access-bulk</dcat:keyword>
+    <dcat:keyword>access-www</dcat:keyword>
+    <dcat:keyword>lod</dcat:keyword>
+    <dcat:keyword>published-by-producer</dcat:keyword>
+    <dcat:keyword>format-rdf</dcat:keyword>
+    <dcat:keyword>ckanupload.esw.200910</dcat:keyword>
+    <dcat:keyword>search</dcat:keyword>
+    <dcat:keyword>deref-vocab</dcat:keyword>
+    <dcat:keyword>access-api</dcat:keyword>
+    <dcat:keyword>format-foaf</dcat:keyword>
+    <dcat:keyword>wikipedia</dcat:keyword>
+    <dcat:keyword>no-provenance-metadata</dcat:keyword>
+    <dcat:keyword>format-rdfs</dcat:keyword>
+    <dcat:keyword>no-vocab-mappings</dcat:keyword>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cNsNNnPC">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/nytimes-linked-open-data"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10359</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="qWKvCBKT">
+    <rdfs:label>ordf</rdfs:label>
+    <rdf:value>0.27</rdf:value>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xowjgfmp">
+    <dcat:accessURL rdf:resource="http://wiki.dbpedia.org/sitemap"/>
+    <rdfs:label>Semantic Web Sitemap</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
+    <dc:format rdf:nodeID="tmYhVh5A"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="iy81122c">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/flickr-wrappr"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2298849</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://downloads.dbpedia.org/3.5.1/all_languages.tar">
+    <dc:format rdf:nodeID="DkuCqROi"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://semantic.ckan.net/package/dbpedia.n3">
+    <opmv:wasGeneratedBy rdf:resource="http://semantic.ckan.net/package/dbpedia#uN0M5iw4"/>
+    <foaf:topic rdf:resource="http://ckan.net/package/dbpedia"/>
+    <rdf:type rdf:resource="http://purl.org/net/opmv/ns#Artifact"/>
+    <foaf:primaryTopic rdf:resource="http://semantic.ckan.net/package/dbpedia"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="zR7egJ2E">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/fu-berlin-dblp"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">196</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="z2jdoYH2">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/fu-berlin-diseasome"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1943</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="x4mbXgO3">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/world-factbook-fu-berlin"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">233</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Sm5sJqMa">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/yago"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6535093</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="UDdKUd9d">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/w3c-wordnet"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">467101</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="E3cAxbSD">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/revyu"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="uI5fOS2d">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/education-data-gov-uk"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1697</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cEQdPPiB">
+    <time:inXSDDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-01-17T01:06:06.207715</time:inXSDDateTime>
+    <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="YLMcoghe">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/fu-berlin-sider"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">751</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="O01oMULy">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/fu-berlin-dailymed"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">43</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="FkncLYqL">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/2000-us-census-rdf"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12529</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ACEVHpX1">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/linkedgeodata"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">53024</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="notd87eY">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/reference-data-gov-uk"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">22</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="MV3CfRur">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/wikicompany"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8348</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://semantic.ckan.net/package/dbpedia">
+    <foaf:isPrimaryTopicOf rdf:resource="http://semantic.ckan.net/package/dbpedia.n3"/>
+    <foaf:isPrimaryTopicOf rdf:resource="http://semantic.ckan.net/package/dbpedia.nt"/>
+    <foaf:isPrimaryTopicOf rdf:resource="http://semantic.ckan.net/package/dbpedia.rdf"/>
+    <dcat:dataset rdf:resource="http://ckan.net/package/dbpedia"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
+    <rdf:type rdf:resource="http://purl.org/net/opmv/ns#Artifact"/>
+    <dc:publisher rdf:resource="http://ckan.net/"/>
+    <opmv:wasGeneratedBy rdf:resource="http://semantic.ckan.net/package/dbpedia#uN0M5iw4"/>
+    <rdfs:label>Record: DBpedia</rdfs:label>
+    <dc:title>Record: DBpedia</dc:title>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Me0jMfHG">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/opencyc"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20362</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="otwWzqwj">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/tcmgenedit_dataset"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">904</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="a4ieRb1V">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/transport-data-gov-uk"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3768</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="uogw9Py2">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/fu-berlin-eurostat"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">137</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="GnZ7EWvu">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/fu-berlin-drugbank"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">729</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="F5eWPclG">
+    <rdfs:label>ckanclient</rdfs:label>
+    <rdf:value>0.4</rdf:value>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="tmYhVh5A">
+    <rdf:value>application/xml</rdf:value>
+    <rdfs:label>Semantic Sitemap</rdfs:label>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/IMT"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://semantic.ckan.net/package/dbpedia#uN0M5iw4">
+    <opmv:wasControlledBy rdf:nodeID="f18YCXDZ"/>
+    <ordf:cmdline>/var/www/semantic.ckan.net/bin/ckanrdf -c /var/www/semantic.ckan.net/etc/ckan.ini --list --describe --outdir /var/www/semantic.ckan.net/htdocs -l /usr/home/ww/log/ckanrdf.log</ordf:cmdline>
+    <opmv:used rdf:resource="http://ckan.net/package/dbpedia"/>
+    <opmv:used rdf:resource="http://ckan.net/api"/>
+    <ordf:hostname>river.styx.org</ordf:hostname>
+    <ordf:pid rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">22637</ordf:pid>
+    <opmv:wasPerformedAt rdf:nodeID="cEQdPPiB"/>
+    <rdf:type rdf:resource="http://purl.org/net/opmv/ns#Process"/>
+    <ordf:version rdf:nodeID="F5eWPclG"/>
+    <ordf:version rdf:nodeID="axOcN9LH"/>
+    <ordf:version rdf:nodeID="qWKvCBKT"/>
+    <rdfs:label>ckanrdf on river.styx.org (22637)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="QQqANshe">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/dbtune-musicbrainz"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">22981</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A5CQAcEk">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/fu-berlin-project-gutenberg"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2510</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="inorJMtP">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/uk-legislation-api"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">33</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/page/DBpedia">
+    <rdfs:label>Link to an example data item within the dataset (RDFa)</rdfs:label>
+    <dc:format rdf:nodeID="SxEWKSI2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://semantic.ckan.net/package/dbpedia.rdf">
+    <opmv:wasGeneratedBy rdf:resource="http://semantic.ckan.net/package/dbpedia#uN0M5iw4"/>
+    <foaf:topic rdf:resource="http://ckan.net/package/dbpedia"/>
+    <rdf:type rdf:resource="http://purl.org/net/opmv/ns#Artifact"/>
+    <foaf:primaryTopic rdf:resource="http://semantic.ckan.net/package/dbpedia"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="eWiCtGnh">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/rdf-book-mashup"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9078</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="XBwtxGi9">
+    <foaf:mbox rdf:resource="mailto:dbpedia-discussion@lists.sourceforge.net"/>
+    <foaf:name>DBpedia Team - http://wiki.dbpedia.org/Imprint</foaf:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb8mOA9x">
+    <void:subjectTarget rdf:resource="http://ckan.net/package/dbpedia"/>
+    <void:objectTarget rdf:resource="http://ckan.net/package/freebase"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+    <void:triples rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6943755</void:triples>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="SxEWKSI2">
+    <rdf:value>application/xhtml+xml</rdf:value>
+    <rdfs:label>RDFa</rdfs:label>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/IMT"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="lbBgOXG3">
+    <rdf:value>text/turtle</rdf:value>
+    <rdfs:label>RDF/Turtle</rdfs:label>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/IMT"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/data/DBpedia.rdf">
+    <rdfs:label>Link to an example data item within the dataset (RDF/XML)</rdfs:label>
+    <dc:format rdf:nodeID="Iakt25ds"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/data/DBpedia.n3">
+    <rdfs:label>Link to an example data item within the dataset (Turtle)</rdfs:label>
+    <dc:format rdf:nodeID="lbBgOXG3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="KqSmWVoZ">
+    <dcat:accessURL rdf:resource="http://eris.okfn.org/nonexistent"/>
+    <rdfs:label>Download page (N-Triples, bz2-compressed)</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="DkuCqROi">
+    <rdf:value>application/x-ntriples</rdf:value>
+    <rdfs:label>RDF/NTriples</rdfs:label>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/IMT"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="axOcN9LH">
+    <rdfs:label>ckanrdf</rdfs:label>
+    <rdf:value>0.7.1</rdf:value>
+  </rdf:Description>
+</rdf:RDF>

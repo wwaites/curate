@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:dc="http://purl.org/dc/terms/"
+   xmlns:dcat="http://www.w3.org/ns/dcat#"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/"
+   xmlns:opmv="http://purl.org/net/opmv/ns#"
+   xmlns:ordf="http://purl.org/NET/ordf/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:time="http://www.w3.org/2006/time#"
+>
+  <rdf:Description rdf:nodeID="kyWdEZwi6038">
+    <rdfs:label>England Rural Payments Agency (RPA), Scotland Scottish Government Rural Payments &amp; Inspections Directorate (SGRPID), Wales Welsh Assembly Government (WAG), Northern Ireland Department of Agriculture and Rural Development (DARD)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="kyWdEZwi6045">
+    <rdfs:label>ordf</rdfs:label>
+    <rdf:value>0.27</rdf:value>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009">
+    <rdf:type rdf:resource="http://purl.org/net/opmv/ns#Artifact"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
+    <foaf:isPrimaryTopicOf rdf:resource="http://data.gov.uk/dataset/cap-uk-payments-2009"/>
+    <foaf:isPrimaryTopicOf rdf:resource="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009.n3"/>
+    <foaf:isPrimaryTopicOf rdf:resource="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009.nt"/>
+    <foaf:isPrimaryTopicOf rdf:resource="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009.rdf"/>
+    <dc:title>Record: CAP Scheme Payments including the Single Payment Scheme (SPS) made to UK beneficiaries 2009</dc:title>
+    <dc:publisher rdf:resource="http://data.gov.uk/"/>
+    <rdfs:label>Record: CAP Scheme Payments including the Single Payment Scheme (SPS) made to UK beneficiaries 2009</rdfs:label>
+    <dcat:dataset rdf:resource="http://catalogue.data.gov.uk/id/dataset/cap-uk-payments-2009"/>
+    <opmv:wasGeneratedBy rdf:resource="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009#kyWdEZwi6043"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009.nt">
+    <foaf:primaryTopic rdf:resource="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009"/>
+    <foaf:topic rdf:resource="http://catalogue.data.gov.uk/id/dataset/cap-uk-payments-2009"/>
+    <rdf:type rdf:resource="http://purl.org/net/opmv/ns#Artifact"/>
+    <opmv:wasGeneratedBy rdf:resource="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009#kyWdEZwi6043"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="kyWdEZwi6039">
+    <rdfs:label>Department for Environment, Food and Rural Affairs</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="kyWdEZwi6040">
+    <rdfs:label>Annual</rdfs:label>
+    <rdf:value>Annual</rdf:value>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="kyWdEZwi6047">
+    <rdfs:label>ckanrdf</rdfs:label>
+    <rdf:value>0.6.5</rdf:value>
+  </rdf:Description>
+  <rdf:Description rdf:about="tag:data.gov.uk,2010:Agriculture%20and%20Environment">
+    <rdfs:label>Agriculture and Environment</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="kyWdEZwi6036">
+    <rdfs:label>XLS</rdfs:label>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/IMT"/>
+    <rdf:value>application/vnd.ms-excel</rdf:value>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="kyWdEZwi6033">
+    <foaf:name>Rural Payments Agency (RPA), Scottish Government Rural Payments &amp; Inspections Directorate (SGRPID), Welsh Assembly Government (WAG), Northern Ireland Department of Agriculture and Rural Development (DARD)</foaf:name>
+    <foaf:mbox rdf:resource="mailto:enquiries@rpa.gsi.gov.uk, ceu@scotland.gsi.gov.uk, wag-en@mailuk.custhelp.com, dardhelpline@dardni.gov.uk"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="kyWdEZwi6048">
+    <time:inXSDDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-01-17T20:04:11.661957</time:inXSDDateTime>
+    <rdf:type rdf:resource="http://www.w3.org/2006/time#Instant"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009.n3">
+    <foaf:primaryTopic rdf:resource="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009"/>
+    <foaf:topic rdf:resource="http://catalogue.data.gov.uk/id/dataset/cap-uk-payments-2009"/>
+    <rdf:type rdf:resource="http://purl.org/net/opmv/ns#Artifact"/>
+    <opmv:wasGeneratedBy rdf:resource="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009#kyWdEZwi6043"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="kyWdEZwi6035">
+    <dcat:accessURL rdf:resource="http://cap-payments.defra.../2008_All_CAP_Search_Results.xls"/>
+    <dc:format rdf:nodeID="kyWdEZwi6036"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="kyWdEZwi6041">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <foaf:nick>ckanrdf</foaf:nick>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.gov.uk/dataset/cap-uk-payments-2009">
+    <foaf:primaryTopic rdf:resource="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009"/>
+    <foaf:topic rdf:resource="http://catalogue.data.gov.uk/id/dataset/cap-uk-payments-2009"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="kyWdEZwi6046">
+    <rdfs:label>ckanclient</rdfs:label>
+    <rdf:value>0.4</rdf:value>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009#kyWdEZwi6043">
+    <ordf:cmdline>/home/ckanrdf/bin/ckanrdf -c /home/ckanrdf/etc/ckan.ini -l /home/ckanrdf/log/ckanrdf.log --outdir /home/ckanrdf/data --list --describe</ordf:cmdline>
+    <rdf:type rdf:resource="http://purl.org/net/opmv/ns#Process"/>
+    <opmv:wasControlledBy rdf:nodeID="kyWdEZwi6041"/>
+    <opmv:used rdf:resource="http://catalogue.data.gov.uk/id/dataset/cap-uk-payments-2009"/>
+    <opmv:used rdf:resource="http://catalogue.data.gov.uk/api"/>
+    <ordf:pid rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15160</ordf:pid>
+    <opmv:wasPerformedAt rdf:nodeID="kyWdEZwi6048"/>
+    <rdfs:label>ckanrdf on hmgqueue (15160)</rdfs:label>
+    <ordf:hostname>hmgqueue</ordf:hostname>
+    <ordf:version rdf:nodeID="kyWdEZwi6045"/>
+    <ordf:version rdf:nodeID="kyWdEZwi6047"/>
+    <ordf:version rdf:nodeID="kyWdEZwi6046"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://catalogue.data.gov.uk/id/dataset/cap-uk-payments-2009">
+    <dcat:distribution rdf:nodeID="kyWdEZwi6035"/>
+    <dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2009-04-30</dc:modified>
+    <dc:rights rdf:resource="http://purl.org/okfn/licenses/uk-ogl"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <dc:creator rdf:nodeID="kyWdEZwi6033"/>
+    <dc:spatial>111100: United Kingdom (England, Scotland, Wales, Northern Ireland)</dc:spatial>
+    <foaf:page rdf:resource="http://data.gov.uk/dataset/cap-uk-payments-2009"/>
+    <foaf:page rdf:resource="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009.n3"/>
+    <foaf:page rdf:resource="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009.nt"/>
+    <foaf:page rdf:resource="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009.rdf"/>
+    <dc:accrualPeriodicity rdf:nodeID="kyWdEZwi6040"/>
+    <dc:title>CAP Scheme Payments including the Single Payment Scheme (SPS) made to UK beneficiaries 2009</dc:title>
+    <dc:identifier>cap-uk-payments-2009</dc:identifier>
+    <dc:description>Amounts received by UK beneficiaries under the Common Agricultural Policy (CAP). The information is published annually (30th April) to meet the requirements of Commission Regulation (EC) No 259/2008.  The details included relate to all CAP scheme payments, including the Single Payment Scheme (SPS), made to beneficiaries.  In the UK there are 4 accredited Paying Agencies: the Rural Payments Agency (RPA), the Scottish Government Rural Payments &amp; Inspections Directorate (SGRPID), the Welsh Assembly Government (WAG) and the Department of Agriculture and Rural Development (DARD) in Northern Ireland.
+
+These bodies may delegate certain functions to other bodies, but are responsible for accounting for all payments under CAP schemes. Search results show which Paying Agency has responsibility for the payments.</dc:description>
+    <rdfs:label>CAP Scheme Payments including the Single Payment Scheme (SPS) made to UK beneficiaries 2009</rdfs:label>
+    <owl:sameAs rdf:resource="urn:uuid:bc48c5e7-5c68-4e49-bfb3-b40d73ec01a6"/>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2009-04-30</dc:issued>
+    <foaf:homepage rdf:resource="http://cap-payments.defra.gov.uk/Default.aspx"/>
+    <dc:source rdf:nodeID="kyWdEZwi6038"/>
+    <dc:source rdf:nodeID="kyWdEZwi6039"/>
+    <dcat:keyword>farming</dcat:keyword>
+    <dcat:keyword>common-agricultural-policy</dcat:keyword>
+    <dcat:keyword>european-union</dcat:keyword>
+    <dcat:theme rdf:resource="tag:data.gov.uk,2010:Agriculture%20and%20Environment"/>
+    <dcat:granularity>town, city, postcode</dcat:granularity>
+    <dcat:granularity>The details included relate to all CAP scheme payments, including the Single Payment Scheme (SPS), made to beneficiaries during the year 16 October to 15 October for the year in question.  This means any payment they received between these dates, for all the schemes, will be included and the amounts may not take account of any subsequent changes or adjustments made to payments.</dcat:granularity>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009.rdf">
+    <foaf:primaryTopic rdf:resource="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009"/>
+    <foaf:topic rdf:resource="http://catalogue.data.gov.uk/id/dataset/cap-uk-payments-2009"/>
+    <rdf:type rdf:resource="http://purl.org/net/opmv/ns#Artifact"/>
+    <opmv:wasGeneratedBy rdf:resource="http://catalogue.data.gov.uk/doc/dataset/cap-uk-payments-2009#kyWdEZwi6043"/>
+  </rdf:Description>
+</rdf:RDF>

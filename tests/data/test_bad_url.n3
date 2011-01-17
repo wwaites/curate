@@ -1,0 +1,12 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix http: <http://www.w3.org/2006/http#>.
+@prefix curl: <http://eris.okfn.org/ww/2010/12/curl#>.
+@prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
+@prefix test: <http://example.org/>.
+
+{ ?dataset dcat:distribution ?dist .
+  ?dist dcat:accessURL ?download } =>
+{ ?download curate:curlReq "GET" }.

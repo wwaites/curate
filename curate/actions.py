@@ -212,7 +212,9 @@ class curlReq(Action):
         if parsed_resource.scheme in ("http", "https"):
             code = c.getinfo(c.HTTP_CODE)
             g.add((resp, HTTP["statusCodeNumber"], Literal("%s" % code)))
-
+            if code > 399:
+                success = False
+                
         if success:
             g.add((resp, CURL["status"], CURL["Success"]))
         else:
