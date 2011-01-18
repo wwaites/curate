@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.10'
+version = '0.11'
 requirements=[
     "ckanclient",
     "pycurl",
@@ -9,7 +9,9 @@ requirements=[
     "FuXi>=1.2",
     ]
 
-if sys.version_info.major == 2 and sys.version_info.minor < 7:
+if isinstance(sys.version_info, tuple): # implies some values of 2.6
+    requirements.append("argparse")
+elif sys.version_info.major == 2 and sys.version_info.minor < 7:
     requirements.append("argparse")
 
 setup(
