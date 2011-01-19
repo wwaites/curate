@@ -22,9 +22,20 @@ class TestUriCmp(unittest.TestCase):
         <http://example.org/> a _:x .
         <http://EXAMPLE.ORG/> a _:x .
         <HTTP://example.org:80/> a _:x .
+        <http://example.com/> a _:x .
         """), format="n3")
         self.network.feedFactsToAdd(generateTokenSet(g))
-
+        logging.debug("Inferred Facts:\n%s" % self.network.inferredFacts.serialize(format="n3"))
+        
     def test_uricmp(self):
-    
-        print self.network.inferredFacts.serialize(format="n3")
+        examples = [URIRef(x) for x in [
+            "http://example.org/",
+            "http://EXAMPLE.ORG/",
+            "HTTP://example.org:80/",
+            "http://example.com/",
+            ]]
+        closureDelta = self.network.inferredFacts
+        
+        assert (examples[0], OWL["sameAs"], examples[1]) in closureDelta
+        assert (examples[0], OWL["sameAs"], examples[2]) in closureDelta
+        assert (examples[0], OWL["sameAs"], examples[3]) not in closureDelta
