@@ -163,7 +163,8 @@ class curlReq(Action):
         c.setopt(c.FAILONERROR, 0)
         c.setopt(c.FOLLOWLOCATION, 1)
         c.setopt(c.MAXREDIRS, 5)
-
+        c.setopt(c.CONNECTTIMEOUT, 10)
+        
         if parsed_resource.scheme in ("http", "https"):
             resp = self.http_conn(g, resource, method)
             def handle_header(h):
