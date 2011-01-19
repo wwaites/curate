@@ -4,27 +4,20 @@ from rdflib.Graph import ConjunctiveGraph
 from rdflib import URIRef, Literal
 from rdflib.store.SPARQL import SPARQLStore
 from curate.work import queue
+from ll.url import URL
 
-def httpGET(_unusedp, resourcep):
+def cmpURI(lhsp, rhsp):
     """
-    :param resourcep: resource pattern, the bound version of which
-        checked
-
-    Check if the given resource responds with data to an HTTP
-    GET request.
+    :param lhsp, rhsp: two urls to be compared according to
+        RFC2396 equality
     """
-    log = getLogger("httpGET(%s, %s)" % (_unusedp.n3(), resourcep.n3()))
+    log = getLogger("cmpURI(%s, %s)" % (lhsp.n3(), rhsp.n3()))
     log.debug("init")
-    def f(_unused, resource):
-        try:
-            log.info(resource)
-            fp = urllib2.urlopen(resource)
-            fp.read()
-            fp.close()
-            return True
-        except Exception, e:
-            log.warn("%s", e)
-            return False
+    def f(lhs, rhs):
+        u1 = URL(lhs)
+        u2 = URL(rhs)
+        log.debug("%s == %s" % (u1, u2))
+        return u1 == u2
     return f
 
 def sparqlCheck(_unusedp, endpointp):
@@ -51,42 +44,4 @@ def sparqlCheck(_unusedp, endpointp):
         except Exception, e:
             log.warn("%s", e)
         return False
-    return f
-
-def addTag(datasetp, tagp):
-    """
-    :param datasetp: the dataset variable, the bound version of which
-        will acquire the tag
-    :param tagp: the tag variable, the bound version of which will be
-        added to the dataset
-
-    This builtin adds a tag to a dataset via the CKAN api. The tag is
-    expected to be a literal value.
-    """
-    def f(dataset, tag):
-        queue.add(dataset, "tags", [unicode(tag)])
-        return True
-    return f
-
-def addGroup(datasetp, groupp):
-    """
-    :param datasetp: the dataset variable, the bound version of which
-        will be added to the specified group
-    :param groupp: the group variable, the bound version of which will
-        have the dataset added to.
-
-    This builtin adds a dataset to a group. The group can be a  URI or
-    a literal. If it is a URI, it will be split on the / character and
-    the dataset will be added to the group named with the last component
-    of the path.
-    """
-    def f(dataset, group):
-        if isinstance(group, URIRef):
-            _, group = group.rsplit("/", 1)
-        elif isinstance(group, Literal):
-            _, group = unicode(group)
-        else:
-            return False
-        queue.add(dataset, "groups", [unicode(group)])
-        return True
     return f

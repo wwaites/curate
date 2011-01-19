@@ -1,10 +1,11 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.13'
+version = '0.14'
 requirements=[
     "ckanclient",
     "pycurl",
+    "ll-xist",
     "rdflib",
     "FuXi>=1.2",
     ]
@@ -50,6 +51,7 @@ Curation Utilities for CKAN""",
         curate=curate.command:curate
 
         [curate.builtins]
+        cmpURI=curate.builtins:cmpURI
 
         [curate.actions]
         httpReq=curate.actions:httpReq

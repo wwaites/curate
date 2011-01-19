@@ -1,0 +1,7 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
+
+{ ?s1 ?p1 ?o1 .
+  ?s2 ?p2 ?o2 .
+  ?s1 curate:cmpURI ?s2 } =>
+{ ?s1 owl:sameAs ?s2 }.
