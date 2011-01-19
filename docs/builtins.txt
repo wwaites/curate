@@ -12,6 +12,8 @@ overview section which has some examples.
 If you are a programmer wishing to implement a new builtin, see the 
 `implementing`_ section below
 
+.. autofunction:: curate.builtins.cmpURI
+
 .. _implementing:
 
 Implementing New Built-ins

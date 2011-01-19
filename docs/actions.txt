@@ -1,0 +1,16 @@
+Actions
+=======
+
+Actions are called in the consequent section of rules.
+
+.. autoclass:: curate.actions.Action
+
+.. autoclass:: curate.actions.httpReq
+
+.. autoclass:: curate.actions.curlReq
+
+.. autoclass:: curate.actions.addTag
+
+.. autoclass:: curate.actions.delTag
+
+.. autoclass:: curate.actions.addGroup
