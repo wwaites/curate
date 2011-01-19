@@ -36,6 +36,10 @@ Usage: ``curate [options] [dataset [dataset [...]]]``
     checks but will not actually perform any operations via the
     CKAN api.
 
+.. cmdoption:: -l
+
+    Log information to file
+    
 .. cmdoption:: -v
 
     Verbose output
@@ -74,6 +78,7 @@ or perform certain actions.
     parser.add_argument("-a", dest="api_base", help="CKAN API base")
     parser.add_argument("-d", dest="delta", action="store_true", 
                         help="Accumulate closure delta")
+    parser.add_argument("-l", dest="logfile", help="Log to file")
     parser.add_argument("-v", dest="debug", action="store_true",
                         help="Verbose output")
     parser.add_argument("-s", dest="save", action="store_true",
@@ -82,10 +87,14 @@ or perform certain actions.
                         help="Dataset(s) to check")
     args = parser.parse_args()
 
-    logging.basicConfig(
-        level=logging.DEBUG if args.debug else logging.INFO,
-        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
-    )
+    logcfg = {
+        "level": logging.DEBUG if args.debug else logging.INFO,
+        "format": "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+    }
+    if args.logfile:
+        logcfg["filename"] = args.logfile
+    logging.basicConfig(**logcfg)
+
     log = logging.getLogger(__name__)
 
     ruleStore, ruleGraph, network = makeRuleStore(args.rules)
