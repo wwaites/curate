@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.14'
+version = '0.15'
 requirements=[
     "ckanclient",
     "pycurl",
@@ -60,5 +60,6 @@ Curation Utilities for CKAN""",
         addTag=curate.actions:addTag
         delTag=curate.actions:delTag
         addGroup=curate.actions:addGroup
+        regexp=curate.actions:regexp
     """,
 )

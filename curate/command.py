@@ -51,6 +51,7 @@ Usage: ``curate [options] [dataset [dataset [...]]]``
 """
 
 import argparse
+import re
 
 import warnings
 warnings.simplefilter("ignore", DeprecationWarning)
@@ -61,6 +62,10 @@ from rdflib.Graph import Graph
 from FuXi.Rete.Util import generateTokenSet
 from ckanclient import CkanClient
 from curate.work import queue
+
+_uri_re = re.compile(r"^[a-zA-Z]+:")
+def is_uri(u):
+    return _uri_re.match(u) is not None
 
 def curate():
     parser = argparse.ArgumentParser(description="""
@@ -108,9 +113,11 @@ or perform certain actions.
     for dataset in datasets:
         log.info("processing %s" % dataset)
         network.reset(closureDelta)
+        if not is_uri(dataset):
+            dataset = args.base + dataset
         try:
             g = Graph()
-            g.parse(args.base + dataset)
+            g.parse(dataset)
         except Exception, e:
             log.error("exception loading graph at %s" % (args.base+dataset,))
             continue

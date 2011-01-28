@@ -1,0 +1,15 @@
+@prefix dc: <http://purl.org/dc/terms/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix curate: <http://eris.okfn.org/ww/2010/12/curate#>.
+
+{ ?s dc:title ?o } =>
+{ ?o curate:regexp "invalid[+" }.
+
+{ ?s dc:title ?o } =>
+{ ?o curate:regexp "^(?P<left>[a-z]+)/(?P<right>[0-9]+)$" }.
+
+{ ?s dc:title ?o } =>
+{ ?o curate:regexp "^([a-z]+)/([0-9]+)$" }.
+
+{ ?s rdfs:seeAlso ?o } =>
+{ ?o curate:regexp "^.*/(?P<ident>[0-9]+).txt" }.

@@ -1,8 +1,10 @@
+import re
 import sys
 import urllib2
 from urlparse import urlparse
 from datetime import datetime
 from logging import getLogger
+from rdflib.Collection import Collection
 from rdflib.Graph import ConjunctiveGraph, Graph
 from rdflib import URIRef, Literal, Variable, BNode
 from rdflib.Namespace import Namespace
@@ -15,6 +17,7 @@ RDFS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 DCT = Namespace("http://purl.org/dc/terms/")
 HTTP = Namespace("http://www.w3.org/2006/http#")
 METH = Namespace("http://www.w3.org/2008/http-methods#")
+CURATE = Namespace("http://eris.okfn.org/ww/2010/12/curate#")
 CURL = Namespace("http://eris.okfn.org/ww/2010/12/curl#")
 
 class Action(object):
@@ -251,3 +254,32 @@ class addGroup(Action):
             return
         queue.add(dataset, "groups", [unicode(group)])
 
+class regexp(Action):
+    def __call__(self, tNode, inferredTriple, token, _binding, debug=False):
+        string = self.get(self.sbind, token)
+        pattern = self.get(self.obind, token)
+
+        try:
+            compiled = re.compile(pattern)
+        except Exception as e:
+            tNode.network.inferredFacts.add((pattern, RDFS.comment, Literal("%s" % e.args)))
+            return
+
+        match = compiled.match(string)
+        if match is not None:
+            m = BNode()
+            tNode.network.inferredFacts.add((m, CURATE["string"], string))
+            tNode.network.inferredFacts.add((m, CURATE["pattern"], pattern))
+            named = match.groupdict()
+            if named:
+                for k,v in named.items():
+                    e = BNode()
+                    tNode.network.inferredFacts.add((m, CURATE["match"], e))
+                    tNode.network.inferredFacts.add((e, CURATE["name"], Literal(k)))
+                    tNode.network.inferredFacts.add((e, CURATE["value"], Literal(v)))
+            else:
+                e = BNode()
+                tNode.network.inferredFacts.add((m, CURATE["match"], e))
+                c = Collection(tNode.network.inferredFacts, e)
+                for part in match.groups():
+                    c.append(Literal(part))
